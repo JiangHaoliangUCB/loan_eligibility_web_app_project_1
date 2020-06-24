@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact V2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename = 'images/icons/favicon.ico')}}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'vendor/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'vendor/animate/animate.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'vendor/css-hamburgers/hamburgers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/main.css')}}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="bg-contact2" style="background-image: url('static/images/bg-03.jpg');">
+		<div class="container-contact2">
+			<div class="wrap-contact2">
+				<form class="contact2-form validate-form" action = "{{ url_for('main')}}" method = 'POST'>
+					<span class="contact2-form-title">
+						Find Your Loan Eligibility Today
+					</span>
+
+					<div class="wrap-input2 validate-input" data-validate="FICO score is required">
+						<input class="input2" type="number" step="any" name="fico" title ="Your most recent FICO score (RNG: 300 - 850)" >
+						<span class="focus-input2" data-placeholder="FICO SCORE"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Interest rate is required">
+						<input class="input2" type="number" step="any" name="int_rate" title="Interest rate of your last approved loan (in %)">
+						<span class="focus-input2" data-placeholder="INTEREST RATE"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Requested loan amount is required">
+						<input class="input2" type="number" step="any" name="loan_amnt" title="Your requested loan amount">
+						<span class="focus-input2" data-placeholder="LOAN AMOUNT"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Grade of your last loan is required">
+						<input class="input2" type="number" step="any" name="grade" title="Grade of your last approved loan">
+						<span class="focus-input2" data-placeholder="GRADE"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "DTI ratio is required">
+						<input class="input2" type="number" step="any" name="dti" title="A ratio calculated using your total monthly debt payments on the total debt obligations, excluding mortgage and the requested loan, divided by your monthly income. (in %)">
+						<span class="focus-input2" data-placeholder="DEBT TO INCOME RATIO"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Revolving line utilization rate is required">
+						<input class="input2" type="number" step="any" name="revol_util" title="The amount of credit you are using relative to all your available revolving credit. (in %)">
+						<span class="focus-input2" data-placeholder="REVOLVING LINE UTILIZATION RATE"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Months since your oldest revolving account opened is required">
+						<input class="input2" type="number" step="any" name="mo_sin_old_rev_tl_op" title="Months since oldest revolving account opened">
+						<span class="focus-input2" data-placeholder="MONTHS SINCE OLDEST REVOLVING ACCOUNT OPENED"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Current balance of all accounts is required">
+						<input class="input2" type="number" step="any" name="tot_cur_bal" title="Your total current balance of all your accounts">
+						<span class="focus-input2" data-placeholder="TOTAL CURRENT BALANCE"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "All utilization is required">
+						<input class="input2" type="number" step="any" name="all_util" title="Balance to credit limit on all your trades (in %)">
+						<span class="focus-input2" data-placeholder="ALL UTILIZATION"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Annual income is required">
+						<input class="input2" type="number" step="any" name="annual_inc" title="Your annual income">
+						<span class="focus-input2" data-placeholder="ANNUAL INCOME"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Months since your most recent bankcard account opened is required">
+						<input class="input2" type="number" step="any" name="mths_since_recent_bc" title="Months since your most recent bankcard account opened">
+						<span class="focus-input2" data-placeholder="MONTHS SINCE NEWEST BANKCARD OPENED"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Number of your currently active bankcard accounts is required">
+						<input class="input2" type="number" step="any" name="num_actv_bc_tl" title="Number of your currently active bankcard accounts">
+						<span class="focus-input2" data-placeholder="NUMBER OF ACTIVE BANKCARD ACCOUNTS"></span>
+					</div>
+
+					<div class="container-contact2-form-btn">
+						<div class="wrap-contact2-form-btn">
+							<div class="contact2-form-bgbtn"></div>
+							<button class="contact2-form-btn" type = "submit">
+								Submit To See Your Result
+							</button>
+						</div>
+					</div>
+				</form>
+				<br>
+				<br>
+            	<p style="font-size:30px">{{ prediction_text }}</p>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+
+</body>
+</html>
